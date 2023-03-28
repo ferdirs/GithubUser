@@ -1,4 +1,4 @@
-package id.co.sistema.githubuser
+package id.co.sistema.githubuser.Networking
 
 import com.google.gson.annotations.SerializedName
 

@@ -22,6 +22,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug{
+            buildConfigField "String", "TOKEN_API", '"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"'
+            buildConfigField ("String", "BASE_URL", '"https://api.github.com/"')
+        }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
