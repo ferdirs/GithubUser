@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import id.co.sistema.githubuser.Networking.ItemsItem
 import id.co.sistema.githubuser.Networking.UserResponse
 import id.co.sistema.githubuser.databinding.ItemRowUserBinding
@@ -22,6 +23,11 @@ class RvAdapter: RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
     class MyViewHolder(private var binding: ItemRowUserBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(userResponse: ItemsItem){
             binding.tvItemName.text = userResponse.login.toString()
+            binding.tvUserGiturl.text = userResponse.htmlUrl.toString()
+            Glide.with(binding.root)
+                .load(userResponse.avatarUrl)
+                .circleCrop()
+                .into(binding.imgItemPhoto)
         }
     }
 
