@@ -1,26 +1,41 @@
 package id.co.sistema.githubuser.RecylerView
 
+import android.annotation.SuppressLint
+import android.content.ClipData.Item
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import id.co.sistema.githubuser.Networking.ItemsItem
 import id.co.sistema.githubuser.Networking.UserResponse
+import id.co.sistema.githubuser.databinding.ItemRowUserBinding
 
 class RvAdapter: RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
-    private var listUserResponse = ArrayList<UserResponse>()
+    private var listUserResponse = ArrayList<ItemsItem>()
 
-    class MyViewHolder(private var binding: ItemUser) {
+    @SuppressLint("NotifyDataSetChanged")
+    fun addDataToList(items: ArrayList<ItemsItem>){
+        listUserResponse.clear()
+        listUserResponse.addAll(items)
+    }
 
+    class MyViewHolder(private var binding: ItemRowUserBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(userResponse: ItemsItem){
+            binding.tvItemName.text = userResponse.login.toString()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        TODO("Not yet implemented")
+        val itemView = ItemRowUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+       holder.bind(listUserResponse[position])
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+       return listUserResponse.size
     }
 
 

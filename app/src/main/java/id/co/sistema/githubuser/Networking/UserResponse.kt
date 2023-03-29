@@ -1,6 +1,9 @@
 package id.co.sistema.githubuser.Networking
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
 
 data class UserResponse(
 
@@ -14,6 +17,7 @@ data class UserResponse(
 	val items: List<ItemsItem?>? = null
 )
 
+@Parcelize
 data class ItemsItem(
 
 	@field:SerializedName("avatar_url")
@@ -27,4 +31,4 @@ data class ItemsItem(
 
 	@field:SerializedName("login")
 	val login: String? = null
-)
+):Parcelable
